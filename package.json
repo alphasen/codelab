@@ -1,0 +1,12 @@
+{
+  "name": "codelab",
+  "version": "0.0.1",
+  "description": " Write HTML, CSS, and JavaScript and get a real-time preview in your own develop computer.",
+  "main": "index.js",
+  "repository": "git@github.com:alphasen/codelab.git",
+  "author": "alpha.sen",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./lib/index.js"
+  }
+}
