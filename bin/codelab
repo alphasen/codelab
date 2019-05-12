@@ -33,12 +33,16 @@ if (argv.h || argv.help) {
     process.exit();
 }
 
-var port = (argv.p || argv.port).trim() || parseInt(process.env.PORT, 10),
-    host = argv.a.trim() || '0.0.0.0',
+var port = argv.p || argv.port || parseInt(process.env.PORT, 10),
+    host = argv.a || '0.0.0.0',
     isLogIp = argv['log-ip'] != 'false' && argv['log-ip'] != '0',
-    isLogUseragent =
-        argv['log-user-agent'] != 'false' && argv['log-user-agent'] != '0',
+    isLogUseragent = argv['log-user-agent']
+        ? argv['log-user-agent'] != 'false' && argv['log-user-agent'] != '0'
+        : false,
     logger;
+
+port ? (port = (port + '').trim()) : '';
+host ? (host = (host + '').trim()) : '';
 
 if (!argv.s && !argv.silent) {
     logger = {
@@ -111,7 +115,7 @@ function listen(port) {
         }
     }
     var options = {
-        rootPath:rootPath,
+        rootPath: rootPath,
         logger: logger
     };
 
