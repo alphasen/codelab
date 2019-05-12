@@ -8,7 +8,7 @@ var zTreeSeting = {
     }
 };
 function zTreeOnClick(e, treeId, treeNode, clickFlag) {
-    $('#preview').attr('src', '/' + treeNode.path);
+    $('#preview').attr('src', '/codelab/truelink/' + treeNode.path);
 }
 function getRouteList() {
     $.get('/codelab-api/filelist', function(json) {
