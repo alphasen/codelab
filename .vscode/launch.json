@@ -5,7 +5,8 @@
             "type": "node",
             "request": "launch",
             "name": "DEBUG",
-            "program": "${workspaceFolder}/lib/index.js"
+            "program": "${workspaceFolder}/bin/codelab",
+            "args": ["-S"]
         }
     ]
 }
