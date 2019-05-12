@@ -1,0 +1,147 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #fff;
+    color: #24292e;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    font-size: 14px;
+    line-height: 1.5;
+    height: 100%;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.Header {
+    background-color: #24292e;
+    color: hsla(0, 0%, 100%, .7);
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 16px;
+    z-index: 32;
+}
+
+.Header,
+.Header-item {
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.Header-item {
+    align-self: stretch;
+    margin-right: 16px;
+}
+
+.Header-item--full {
+    flex: auto;
+}
+
+.Header-link {
+    color: #fff;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+details summary {
+    cursor: pointer;
+}
+
+details>summary::-webkit-details-marker {
+    display: none;
+}
+
+.dropdown-menu {
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid rgba(27, 31, 35, .15);
+    border-radius: 4px;
+    box-shadow: 0 3px 12px rgba(27, 31, 35, .15);
+    left: 0;
+    list-style: none;
+    margin-top: 2px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    position: absolute;
+    top: 100%;
+    width: 0;
+    z-index: 100;
+}
+
+.dropdown-menu-sw {
+    right: 0;
+}
+
+.dropdown-menu:before {
+    border: 8px solid transparent;
+    border-bottom-color: rgba(27, 31, 35, .15);
+}
+
+.dropdown-menu-sw:before {
+    left: auto;
+    right: 9px;
+    top: -16px;
+}
+
+.dropdown-item {
+    color: #24292e;
+    display: block;
+    overflow: hidden;
+    padding: 4px 10px 4px 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dropdown-item:hover {
+    background-color: #0366d6;
+    color: #fff;
+    outline: none;
+    text-decoration: none;
+}
+
+.d-flex {
+    display: flex;
+}
+
+a {
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.mr-3 {
+    margin-right: 16px;
+}
+
+.details-reset>summary {
+    list-style: none;
+}
+
+.octicon {
+    vertical-align: text-bottom;
+    display: inline-block;
+    fill: currentColor;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+.dropdown-caret {
+    border-bottom: 0 solid transparent;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top-style: solid;
+    border-top-width: 4px;
+    content: "";
+    display: inline-block;
+    height: 0;
+    vertical-align: middle;
+    width: 0;
+}
+
+.content {
+    height: 100%;
+}

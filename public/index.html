@@ -1,12 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>public-index.html</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>codelab</title>
+    <link rel="stylesheet" href="../lib/ztreev3/css/demo.css" type="text/css">
+    <link rel="stylesheet" href="../lib/ztreev3/css/metroStyle/metroStyle.css" type="text/css">
+    <link rel="stylesheet" href="./css/normalize.css" type="text/css">
+    <link rel="stylesheet" href="../css/main.css" type="text/css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../lib/ztreev3/jquery.ztree.core.min.js"></script>
+    <script src="../js/main.js"></script>
 </head>
+
 <body>
-    public-index.html body content
+    <div class="position-relative">
+        <header class="Header" role="banner">
+            <div class="Header-item position-relative">
+                <details class="details-overlay details-reset">
+                    <summary class="Header-link">
+                        Routes
+                        <span class="dropdown-caret"></span>
+                    </summary>
+                    <details-menu class="dropdown-menu dropdown-menu-sw" role="menu">
+                        <ul id="treeDemo" class="ztree"></ul>
+                    </details-menu>
+                </details>
+            </div>
+            <div class="Header-item Header-item--full">
+                <!-- <nav class="d-flex" aria-label="Global">
+                    <a id="routes_btn" class="Header-link  mr-3" href="/">
+                        Routes
+                    </a>
+                </nav> -->
+            </div>
+            <!-- <div class="Header-item position-relative">
+                <details class="details-overlay details-reset">
+                    <summary class="Header-link">
+                        <svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16"
+                            aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path>
+                        </svg>
+                        <span class="dropdown-caret"></span>
+                    </summary>
+                    <details-menu class="dropdown-menu dropdown-menu-sw" role="menu">
+                        <a role="menuitem" class="dropdown-item" href="/new">
+                            New file
+                        </a>
+                    </details-menu>
+                </details>
+            </div> -->
+        </header>
+    </div>
+    <div class="content">
+        <iframe id="preview" frameborder="0" scrolling="no" width="100%" height="100%" name="preview" seamless
+            src="https://www.so.com/"></iframe>
+    </div>
 </body>
+
 </html>
