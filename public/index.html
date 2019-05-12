@@ -5,13 +5,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>codelab</title>
-    <link rel="stylesheet" href="../lib/ztreev3/css/demo.css" type="text/css">
-    <link rel="stylesheet" href="../lib/ztreev3/css/metroStyle/metroStyle.css" type="text/css">
-    <link rel="stylesheet" href="./css/normalize.css" type="text/css">
-    <link rel="stylesheet" href="../css/main.css" type="text/css">
-    <script src="../js/jquery-3.4.1.min.js"></script>
-    <script src="../lib/ztreev3/jquery.ztree.core.min.js"></script>
-    <script src="../js/main.js"></script>
+    <link rel="stylesheet" href="/codelab-statics/lib/ztreev3/css/demo.css" type="text/css">
+    <link rel="stylesheet" href="/codelab-statics/lib/ztreev3/css/metroStyle/metroStyle.css" type="text/css">
+    <link rel="stylesheet" href="/codelab-statics/css/normalize.css" type="text/css">
+    <link rel="stylesheet" href="/codelab-statics/css/main.css" type="text/css">
+    <script src="/codelab-statics/js/jquery-3.4.1.min.js"></script>
+    <script src="/codelab-statics/lib/ztreev3/jquery.ztree.core.min.js"></script>
+    <script src="/codelab-statics/js/main.js"></script>
+    <script>
+        $(document).ready(function () {
+            isDirRequest=false;
+            initTree();
+        });
+    </script>
 </head>
 
 <body>
@@ -54,8 +60,11 @@
         </header>
     </div>
     <div class="content">
+        <div id="folder_container" ContainerAttrToReplace>
+            <ul id="folder_list" class="ztree"></ul>
+        </div>
         <iframe id="preview" frameborder="0" scrolling="no" width="100%" height="100%" name="preview" seamless
-            src="https://www.so.com/"></iframe>
+            PreviewAttrToReplace src="#previewSrc#"></iframe>
     </div>
 </body>
 
