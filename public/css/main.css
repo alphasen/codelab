@@ -186,3 +186,7 @@ ul.ztree{
     height: 800px;
     margin-top: 10px;
 }
+
+#save_btn{
+    display: none;
+}
