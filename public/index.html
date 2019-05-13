@@ -12,10 +12,34 @@
     <script src="/codelab-statics/js/jquery-3.4.1.min.js"></script>
     <script src="/codelab-statics/lib/ztreev3/jquery.ztree.core.min.js"></script>
     <script src="/codelab-statics/js/main.js"></script>
+    <link rel="stylesheet" href="/codelab-statics/lib/codemirror-5.46.0/lib/codemirror.css" />
+    <script src="/codelab-statics/lib/codemirror-5.46.0/lib/codemirror.js"></script>
+    <!--引入css文件，用以支持主题-->
+    <link rel="stylesheet" href="/codelab-statics/lib/codemirror-5.46.0/theme/dracula.css" />
+    <!--支持代码折叠-->
+    <link rel="stylesheet" href="/codelab-statics/lib/codemirror-5.46.0/fold/foldgutter.css" />
+    <script src="/codelab-statics/lib/codemirror-5.46.0/fold/foldcode.js"></script>
+    <script src="/codelab-statics/lib/codemirror-5.46.0/fold/foldgutter.js"></script>
+    <script src="/codelab-statics/lib/codemirror-5.46.0/fold/brace-fold.js"></script>
+    <script src="/codelab-statics/lib/codemirror-5.46.0/fold/comment-fold.js"></script>
+    <!-- 代码高亮 -->
+    <script src="/codelab-statics/lib/codemirror-5.46.0/mod/css.js"></script>
+    <script src="/codelab-statics/lib/codemirror-5.46.0/mod/htmlembedded.js"></script>
+    <script src="/codelab-statics/lib/codemirror-5.46.0/mod/htmlmixed.js"></script>
+    <script src="/codelab-statics/lib/codemirror-5.46.0/mod/javascript.js"></script>
     <script>
         $(document).ready(function () {
             isDirRequest=false;
             initTree();
+            //根据DOM元素的id构造出一个编辑器
+            window.editor = CodeMirror.fromTextArea(document.getElementById("codemirror"), {
+                lineNumbers: true,    //显示行号
+                theme: "dracula",    //设置主题
+                lineWrapping: true,    //代码折叠
+                foldGutter: true,
+                gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+                matchBrackets: true,    //括号匹配
+            });
         });
     </script>
 </head>
@@ -30,41 +54,26 @@
                         <span class="dropdown-caret"></span>
                     </summary>
                     <details-menu class="dropdown-menu dropdown-menu-sw" role="menu">
-                        <ul id="treeDemo" class="ztree"></ul>
+                        <ul id="nav_tree" class="ztree"></ul>
                     </details-menu>
                 </details>
             </div>
             <div class="Header-item Header-item--full">
-                <!-- <nav class="d-flex" aria-label="Global">
-                    <a id="routes_btn" class="Header-link  mr-3" href="/">
-                        Routes
-                    </a>
-                </nav> -->
             </div>
-            <!-- <div class="Header-item position-relative">
-                <details class="details-overlay details-reset">
-                    <summary class="Header-link">
-                        <svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16"
-                            aria-hidden="true">
-                            <path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path>
-                        </svg>
-                        <span class="dropdown-caret"></span>
-                    </summary>
-                    <details-menu class="dropdown-menu dropdown-menu-sw" role="menu">
-                        <a role="menuitem" class="dropdown-item" href="/new">
-                            New file
-                        </a>
-                    </details-menu>
-                </details>
-            </div> -->
         </header>
     </div>
     <div class="content">
-        <div id="folder_container" ContainerAttrToReplace>
-            <ul id="folder_list" class="ztree"></ul>
+        <div id="folder_container" containerattrtoreplace>
+            <ul id="folder_tree" class="ztree"></ul>
         </div>
         <iframe id="preview" frameborder="0" scrolling="no" width="100%" height="100%" name="preview" seamless
-            PreviewAttrToReplace src="#previewSrc#"></iframe>
+            previewattrtoreplace src="#previewSrc#"></iframe>
+        <div id="editor">
+            <ul id="sidebar_tree" class="ztree"></ul>
+            <textarea id="codemirror"></textarea>
+            <iframe id="editor_preview" frameborder="0" scrolling="no" width="100%" height="100%" name="preview" seamless
+                previewattrtoreplace></iframe>
+        </div>
     </div>
 </body>
 

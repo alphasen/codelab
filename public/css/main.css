@@ -150,7 +150,7 @@ svg:not(:root) {
 ul.ztree{
     background: #f8f8f8;
 }
-#folder_list{
+#folder_tree{
     width: 50%;
     height: 100%;
     margin: 0 auto;
@@ -158,13 +158,31 @@ ul.ztree{
     border: 1px solid #eee;
     padding: 10px;
 }
-#folder_list ul li{
-    list-style: none;
-    cursor: pointer;
-}
-#folder_list ul a{
-    font-size: 20px;
-}
+
 #preview{
     display: none;
+}
+#editor{
+    display: none;
+}
+
+#editor #sidebar_tree{
+    width: 300px;
+    position: absolute;
+    height: 800px;
+    margin-top: 0;
+}
+
+#codemirror{
+    margin-left: 320px;
+    width: calc(100% - 340px);
+    height: 800px;
+    margin-top: 10px;
+}
+
+#editor .CodeMirror-wrap{
+    margin-left: 320px;
+    width: calc(100% - 340px);
+    height: 800px;
+    margin-top: 10px;
 }

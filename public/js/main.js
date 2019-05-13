@@ -8,6 +8,7 @@ var zTreeSeting = {
     }
 };
 function zTreeOnClick(e, treeId, treeNode, clickFlag) {
+    console.log('click :');
     if (treeNode.type === 'folder') {
         if (folderTree) {
             // clear nodes start
@@ -26,34 +27,51 @@ function zTreeOnClick(e, treeId, treeNode, clickFlag) {
                   '/' + treeNode.path
               )
             : '';
-        $('#preview').css('display', 'none');
-        $('#folder_container').css('display', 'block');
+        showContainers(['folder_container'])
     } else {
-        $('#preview').attr('src', '/codelab/truelink/' + treeNode.path);
-        treeNode.path
-            ? history.pushState(
-                  null,
-                  'codelab|' + treeNode.name,
-                  '/' + treeNode.path
-              )
-            : '';
-        $('#preview').css('display', 'block');
-        $('#folder_container').css('display', 'none');
+        if (treeNode.path.endsWith('html') || treeNode.path.endsWith('htm')){// 如果是可以预览的
+            $('#preview').attr('src', '/codelab/truelink/' + treeNode.path);
+            treeNode.path
+                ? history.pushState(
+                    null,
+                    'codelab|' + treeNode.name,
+                    '/' + treeNode.path
+                )
+                : '';
+            showContainers(['preview'])
+        }else{
+            // editor.setValue("");    //给代码框赋值
+            // editor.getValue();    //获取代码框的值
+            $.get('/codelab/truelink/' + treeNode.path,function (res) {
+                editor.setValue(res);
+            })
+            showContainers(['editor'])
+        }
     }
 }
+
+function showContainers(containers){
+    !containers?containers=[]:''
+    $('#preview').css('display', containers.includes('preview')?'block':'none');
+    $('#folder_container').css('display', containers.includes('folder_container') ? 'block' : 'none');
+    $('#editor').css('display', containers.includes('editor') ? 'block' : 'none');
+}
+
 function initTree() {
     $.get('/codelab-api/filelist', function(json) {
-        zTreeObj = $.fn.zTree.init($('#treeDemo'), zTreeSeting, json);
+        zTreeObj = $.fn.zTree.init($('#nav_tree'), zTreeSeting, json);
+        zTreeObj.expandAll(true);
+        zTreeObj = $.fn.zTree.init($('#sidebar_tree'), zTreeSeting, json);
         zTreeObj.expandAll(true);
         if (!isDirRequest) {
-            folderTree = $.fn.zTree.init($('#folder_list'), zTreeSeting, json);
+            folderTree = $.fn.zTree.init($('#folder_tree'), zTreeSeting, json);
             folderTree.expandAll(true);
         }
     });
     if (isDirRequest) {
         var dir = location.pathname;
         $.get('/codelab-api/filelist?dir=' + dir, function(json) {
-            folderTree = $.fn.zTree.init($('#folder_list'), zTreeSeting, json);
+            folderTree = $.fn.zTree.init($('#folder_tree'), zTreeSeting, json);
             folderTree.expandAll(true);
         });
     }
