@@ -190,6 +190,6 @@ ul.ztree{
     margin-top: 10px;
 }
 
-#save_btn,#editor_preview{
+#save_btn,#editor_preview,#run_btn,#debug_btn,#edit_btn,#stop_btn{
     display: none;
 }
