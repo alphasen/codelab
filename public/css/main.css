@@ -143,7 +143,7 @@ svg:not(:root) {
 }
 
 .content {
-    height: 100%;
+    height: calc(100% - 63px);
 }
 
 /* ztree */
@@ -164,13 +164,16 @@ ul.ztree{
 }
 #editor{
     display: none;
+    height: 100%;
 }
 
 #editor #sidebar_tree{
     width: 300px;
     position: absolute;
-    height: 800px;
-    margin-top: 0;
+    height: calc(100% - 83px);
+    overflow: scroll;
+    top: 53px;
+    bottom: 0;
 }
 
 #codemirror{
@@ -183,10 +186,10 @@ ul.ztree{
 #editor .CodeMirror-wrap{
     margin-left: 320px;
     width: calc(100% - 340px);
-    height: 800px;
+    height: calc(100% - 8px);
     margin-top: 10px;
 }
 
-#save_btn{
+#save_btn,#editor_preview{
     display: none;
 }
