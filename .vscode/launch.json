@@ -6,7 +6,7 @@
             "request": "launch",
             "name": "DEBUG",
             "program": "${workspaceFolder}/bin/codelab",
-            "args": ["../","-p 3333","-a 127.0.0.1","--open=false","--log-ip=false","--log-user-agent=true"]
+            "args": ["-p 3333","-a 127.0.0.1","--open=false","--log-ip=false","--log-user-agent=true"]
         }
     ]
 }

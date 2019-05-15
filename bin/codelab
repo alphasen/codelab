@@ -4,6 +4,7 @@
 
 var colors = require('colors/safe'),
     path = require('path'),
+    fs = require('fs'),
     os = require('os'),
     codelab = require('../lib'),
     portfinder = require('portfinder'),
@@ -107,12 +108,15 @@ if (!port) {
 function listen(port) {
     var rootPath = process.cwd(),
         commandPath = argv._[0];
-    if (commandPath) {
+    if (commandPath && fs.existsSync(commandPath)) {
         if (path.isAbsolute(commandPath)) {
             rootPath = commandPath;
         } else {
             rootPath = path.resolve(process.cwd(), commandPath || '');
         }
+    } else {
+        logger.info(colors.red('the path of specified is invalid'));
+        return;
     }
     var options = {
         rootPath: rootPath,
