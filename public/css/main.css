@@ -190,6 +190,21 @@ ul.ztree{
     margin-top: 10px;
 }
 
+#editor .CodeMirror-wrap.debug{
+    height: calc(100% - 8px);
+    margin-top: 10px;
+    width: 50%;
+    display: inline-block;
+    margin-left: 0;
+}
+
+#editor_preview{
+    display: unset;
+    width: 50%;
+    overflow: scroll;
+    float: right;
+}
+
 #save_btn,#editor_preview,#run_btn,#debug_btn,#edit_btn,#stop_btn{
     display: none;
 }

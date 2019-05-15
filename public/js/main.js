@@ -72,7 +72,7 @@ function zTreeOnClick(e, treeId, treeNode, clickFlag) {
                 });
             })
             if(treeNode.path.endsWith('.js')){ // js file can debug
-                showContainers(['editor','debug_btn','save_btn'])
+                showContainers(['editor','debug_btn','save_btn','sidebar_tree'])
                 $('#debug_btn').on('click', function (e) {
                     e.preventDefault()
                     $('#debug_btn').text('...')
@@ -87,8 +87,10 @@ function zTreeOnClick(e, treeId, treeNode, clickFlag) {
                             $('#debug_btn').text('Debug')
                             $('#sidebar_tree').css('display','none')
                             $('#editor_preview').attr('src', '/codelab-statics/debugjs/' + treeNode.path);
+                            $('.CodeMirror-wrap').addClass('debug')
                             showContainers(['editor','debug_btn','save_btn','editor_preview','stop_btn'])
                             $('#stop_btn').on('click',function () {
+                                $('.CodeMirror-wrap').removeClass('debug')
                                 showContainers(['editor','debug_btn','save_btn','sidebar_tree'])
                             })
                         },
