@@ -81,7 +81,7 @@ function zTreeOnClick(e, treeId, treeNode, clickFlag) {
                         url: '/codelab-api/debugfile',
                         data: {
                             filepath: treeNode.path,
-                            content: editor.getValue()
+                            content: editor.getSelection()||editor.getValue()
                         },
                         success: function (data) { // TODO 回调函数未执行
                             $('#debug_btn').text('Debug')
