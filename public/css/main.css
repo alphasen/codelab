@@ -205,6 +205,11 @@ ul.ztree{
     float: right;
 }
 
-#save_btn,#editor_preview,#run_btn,#debug_btn,#edit_btn,#stop_btn{
+#save_btn,#editor_preview,#run_btn,#debug_btn,#edit_btn,#stop_btn,#refresh_debug_btn{
     display: none;
+}
+
+.CodeMirror-gutter-elt div{
+    margin-left: -12px;
+    margin-top: 1px;
 }

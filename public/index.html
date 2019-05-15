@@ -29,7 +29,7 @@
     <script src="/codelab-statics/lib/codemirror-5.46.0/mod/javascript.js"></script>
     <script>
         $(document).ready(function () {
-            isDirRequest=false;
+            isDirRequest = false;
             initTree();
             //根据DOM元素的id构造出一个编辑器
             window.editor = CodeMirror.fromTextArea(document.getElementById("codemirror"), {
@@ -37,8 +37,13 @@
                 theme: "dracula",    //设置主题
                 lineWrapping: true,    //代码折叠
                 foldGutter: true,
-                gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+                gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter", "breakpoints"],
                 matchBrackets: true,    //括号匹配
+            });
+            editor.on("gutterClick", function (cm, n) {
+                var info = cm.lineInfo(n);
+                toggleDebugger(cm,info,info.gutterMarkers)
+                cm.setGutterMarker(n, "breakpoints", info.gutterMarkers ? null : makeMarker());
             });
         });
     </script>
@@ -65,6 +70,7 @@
                     <a class="Header-link mr-3" id="debug_btn" href="#">Debug</a>
                     <a class="Header-link mr-3" id="edit_btn" href="#">Edit</a>
                     <a class="Header-link mr-3" id="stop_btn" href="#">Stop</a>
+                    <a class="Header-link mr-3" id="refresh_debug_btn" href="#">Refresh</a>
                 </nav>
             </div>
         </header>
@@ -78,8 +84,8 @@
         <div id="editor">
             <ul id="sidebar_tree" class="ztree"></ul>
             <textarea id="codemirror"></textarea>
-            <iframe id="editor_preview" frameborder="0" scrolling="no" width="100%" height="100%" name="preview" seamless
-                previewattrtoreplace></iframe>
+            <iframe id="editor_preview" frameborder="0" scrolling="no" width="100%" height="100%" name="preview"
+                seamless previewattrtoreplace></iframe>
         </div>
     </div>
 </body>
