@@ -7,6 +7,15 @@ var zTreeSeting = {
         onClick: zTreeOnClick
     }
 };
+var previewFileTypes = [
+    '.html',
+    '.htm',
+    '.jpg',
+    '.png',
+    '.gif',
+    '.ico',
+    '.svg'
+];
 function zTreeOnClick(e, treeId, treeNode, clickFlag) {
     if (treeNode.type === 'folder') {
         if (folderTree) {
@@ -27,7 +36,7 @@ function zTreeOnClick(e, treeId, treeNode, clickFlag) {
             : '';
         showContainers(['folder_container']);
     } else {
-        if (treeNode.path.endsWith('.html') || treeNode.path.endsWith('.htm')) {
+        if (isFileCanPreview(treeNode.path)) {
             // 如果是可以预览的
             $('#preview').attr('src', '/codelab/truelink/' + treeNode.path);
             treeNode.path
@@ -117,12 +126,12 @@ function zTreeOnClick(e, treeId, treeNode, clickFlag) {
                                     'sidebar_tree'
                                 ]);
                             });
-                            $('#refresh_debug_btn').on('click',function () {
+                            $('#refresh_debug_btn').on('click', function() {
                                 $('#editor_preview').attr(
                                     'src',
                                     '/codelab-statics/debugjs/' + treeNode.path
                                 );
-                            })
+                            });
                         },
                         error: function(err) {
                             console.log(err);
@@ -204,6 +213,13 @@ function initTree() {
     }
 }
 
+function isFileCanPreview(path) {
+    if (!path || !(path + '')) {
+        return;
+    }
+    return previewFileTypes.some(fileType => path.endsWith(fileType));
+}
+
 /**
  * debugger marker element generate
  */
@@ -219,11 +235,11 @@ function toggleDebugger(cm, line, gutterMarkers) {
     var text = line.text; //
     var pos = {};
     if (gutterMarkers && gutterMarkers.breakpoints) {
-        if(text&&text.trim()==='debugger'){
+        if (text && text.trim() === 'debugger') {
             doc.replaceRange(
                 '',
                 { line: line.line, ch: 0 },
-                { line: line.line+1, ch: 0 }
+                { line: line.line + 1, ch: 0 }
             );
         }
     } else {
